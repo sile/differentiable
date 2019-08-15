@@ -8,12 +8,12 @@ pub trait Evaluate {
     fn evaluate(&self) -> Self::Value;
 }
 
+pub trait Gradient: Evaluate {
+    fn gradient(&self) -> Self::Value;
+}
+
 pub trait Differentiate: Evaluate {
     type Derivative: Evaluate<Value = Self::Value>;
 
     fn differentiate(self) -> Self::Derivative;
-}
-
-pub trait Gradient: Differentiate {
-    fn gradient(&self) -> Self::Value;
 }
